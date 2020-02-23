@@ -7,8 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class TddStackTest {
 
@@ -23,7 +22,7 @@ public class TddStackTest {
     @Test
     public void testPublicConstructor() {
         TddStack firstStack = new TddStack();
-        assertEquals(100, firstStack.DEFAULT_DEPTH);
+        assertEquals(firstStack.DEFAULT_DEPTH, firstStack.stackDepth);
     }
 
     @Test
@@ -41,7 +40,8 @@ public class TddStackTest {
     @Test
     public void testPop() {
         TddStack firstStack = new TddStack();
-        assertNull(firstStack);
+        IStackable poppedVariable = firstStack.pop();
+        assertNull(poppedVariable);
     }
 
     @Test
@@ -49,7 +49,8 @@ public class TddStackTest {
         TddStack firstStack = new TddStack();
         IStackable iStackable1 = new Faculty();
         firstStack.push(iStackable1);
-        assertEquals(false, firstStack.isEmpty());
+        boolean isEmpty = firstStack.isEmpty();
+        assertFalse(isEmpty);
     }
 
     @Test
@@ -61,7 +62,7 @@ public class TddStackTest {
         firstStack.push(iStackable2);
         IStackable iStackable3 = new Faculty();
         firstStack.push(iStackable3);
-        assertEquals(true, firstStack.isFull());
+        assertTrue(firstStack.isFull());
     }
 
     @Test
